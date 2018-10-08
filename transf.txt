@@ -1,4 +1,0 @@
-trac: 67103
-
-select * from mensagensaplicacao
-where sigla = 'TRANSFERENCIA_VALOR_DUPLICADO'
