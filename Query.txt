@@ -1,9 +1,0 @@
-select * from mensagensaplicacao
-where sigla in ('TRANSFERENCIA_VALOR_DUPLICADO', 'COMPROVANTE_NAO_GERADO_TRANSFERENCIA')
-
-
-
-Tivemos um problema. Mas dá uma olhada no seu extrato para ver se a transação não foi finalizada e debitada antes de prosseguir, ok?
-
-
-Transferência não processada. Já existe um lançamento com o mesmo valor. Verifique seu histórico. Caso necessário aguarde 2 minutos e repita a operação.
