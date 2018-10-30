@@ -1,0 +1,9 @@
+Hoje temos o seguinte cenário:
+- Cliente PJ acessa a ContaSuper Empresas e solicita o cartão “Business” através de “Cartões” em “Solicitar Cartões”;
+- Feito isso, a solicitação gera o lote com cartões “business” tarja que vem para o sistema de “Operações”;
+- No sistema de “Operações”, o comando de “embossing” é dado manualmente (equipe BackOffice) para gerar número de lote MAS NÃO aplica o comando “TRANSMITIR”;
+- O BackOffice, por sua vez, inclui este lote e o número do CNPJ da empresa no processo de “SOLICITAÇÃO MASSIVA” para GERAR pedido de embossing de NOVO LOTE de CARTÕES COM CHIP e então aplica o comando “TRANSMITIR”.
+ 
+O que precisamos:
+Que na solicitação realizada pelo PJ através de “Cartões” em “Solicitar Cartões” já gere o lote com cartões “business” chip.
+Segundo algumas informações coletadas, parece que a única alteração a ser realizada é no parâmetro informando ao “motor” que o cartão deve ser emitido com CHIP na solicitação individual assim como acontece na massiva.
