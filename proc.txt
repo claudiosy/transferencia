@@ -1,0 +1,9 @@
+exec pObterInconsistenciasRepalGrupoEconomico
+	@dataInicial='2016-01-18 00:00:00',
+	@dataFinal='2018-11-30 00:00:00'
+
+exec pObterInconsistenciasRepal
+	@dataInicial='2016-01-18 00:00:00',
+	@dataFinal='2018-11-30 00:00:00',
+	@tipoConsulta=2
+	
