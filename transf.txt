@@ -1,63 +1,16 @@
-public static class LoggerExtensions
-	{
-        private static ReaderWriterLockSlim lock_ = new ReaderWriterLockSlim();
-
-        public static void LogInformation(this ILogger logger, string messageLog)
-		{
-			GenerateLog(logger, LogLevel.Information, messageLog);
-		}
-
-		public static void LogError(this ILogger logger, string messageLog)
-		{
-			GenerateLog(logger, LogLevel.Error, messageLog);
-		}
-
-		private static void GenerateLog(this ILogger logger, LogLevel level, string messageLog)
-		{
-			if (AppSettingsLog.IsLogFile)
-			{
-				var dir = AppSettingsLog.PathLog + "\\LogDoc";
-
-				if (!Directory.Exists(dir))
-				{
-					Directory.CreateDirectory(dir);
-				}
-
-				var file = dir + "\\" + DateTime.Now.ToString("dd_MM_yyyy_HH") + ".log";
-                lock_.EnterWriteLock();
-
-                try
-                {
-                    using (FileStream fs = new FileStream(file, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
-                    {
-                        var sr = new StreamReader(fs, Encoding.UTF8);
-                        sr.ReadToEnd();
-                        var information = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") + " - (" + level + ") : " + messageLog;
-
-                        byte[] newline = Encoding.UTF8.GetBytes(information + Environment.NewLine);
-                        fs.Write(newline, 0, newline.Length);
-                        fs.Flush();
-                        fs.Close();
-                    }
-                }
-				catch (Exception ex)
-				{
-					logger.LogError(ex, "Erro na geração do Log");
-				}
-                finally
-                {
-                    lock_.ExitWriteLock();
-                }
+public string DataTableToJSON(DataTable table)
+    {
+        JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+        List<Dictionary<string, object>> parentRow = new List<Dictionary<string, object>>();
+        Dictionary<string, object> childRow;
+        foreach (DataRow row in table.Rows)
+        {
+            childRow = new Dictionary<string, object>();
+            foreach (DataColumn col in table.Columns)
+            {
+                childRow.Add(col.ColumnName, row[col]);
             }
-			else
-			{
-				if (LogLevel.Information == level)
-				{
-					logger.LogInformation(messageLog, null);
-				}
-				else
-				{
-					logger.LogError(messageLog, null);
-				}
-			}
-		}
+            parentRow.Add(childRow);
+        }
+        return jsSerializer.Serialize(parentRow);
+    }
