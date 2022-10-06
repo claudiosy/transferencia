@@ -1,1 +1,18 @@
-^[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9_.-]
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: keep-alive
+Content-Type:application/json
+//Host:api.modalmais.com.br
+MB.Id:bfb22d042a590de79f53c1d0abbe35b8
+MB.Platform:Site
+MB.Session:248641e9c91af504a6a962aacb8634a11648056589572
+Origin: https://bancodigital.modalmais.com.br
+Referer: https://bancodigital.modalmais.com.br/
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-site
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36
