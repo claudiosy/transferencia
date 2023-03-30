@@ -18,3 +18,7 @@ Sec-Fetch-Site: same-site
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36
 
 https://stackoverflow.com/questions/35733040/how-to-install-net-4-framework-in-windows-10
+
+SQL Error: ORA-01704: string literal too long
+01704. 00000 -  "string literal too long"
+*Cause:    The string literal is longer than 4000 characters.
