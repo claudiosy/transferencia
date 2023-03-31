@@ -22,3 +22,52 @@ https://stackoverflow.com/questions/35733040/how-to-install-net-4-framework-in-w
 SQL Error: ORA-01704: string literal too long
 01704. 00000 -  "string literal too long"
 *Cause:    The string literal is longer than 4000 characters.
+
+DECLARE
+    VAR_DS_TERMO_2 CLOB:= '<h3>TERMO DE RESPONSABILIDADE DE USO TESTE</h3><h3></h3>;
+BEGIN                    
+    UPDATE SMC_CORRETORA.CAD_PRODUTO
+     SET
+        DS_TERMO_2 = VAR_DS_TERMO_2                        
+     WHERE
+        CD_PRODUTO = 9;
+END;
+
+commit;DECLARE
+    VAR_DS_TERMO_2 CLOB:= '<h3>TERMO DE RESPONSABILIDADE DE USO TESTE</h3><h3></h3>Por meio deste instrumento, declaro que:<br/><br/>1.';
+BEGIN                    
+    UPDATE SMC_CORRETORA.CAD_PRODUTO
+     SET
+        DS_TERMO_2 = VAR_DS_TERMO_2                        
+     WHERE
+        CD_PRODUTO = 9;
+END;
+
+commit;
+
+
+string sql =
+                  @"DECLARE
+                        VAR_DS_TERMO_2 CLOB:= :DS_TERMO_2;
+                    BEGIN                    
+                        UPDATE SMC_CORRETORA.CAD_PRODUTO
+                         SET
+                            DS_TERMO_2 = VAR_DS_TERMO_2                        
+                         WHERE
+                            CD_PRODUTO = :CD_PRODUTO;
+                    END;"
+                    
+  //using (var cnn = new OracleConnection(_connectionString))
+                //{
+                //    cnn.Open();
+                //    await cnn.ExecuteAsync(sql, new
+                
+                
+                using (OracleConnection connection = new OracleConnection(_connectionString))
+                {
+                    OracleCommand command = new OracleCommand(sql, connection);
+                    command.Parameters.Add(new OracleParameter("DS_TERMO_2", produto.TermoAdesao));
+                    command.Parameters.Add(new OracleParameter("CD_PRODUTO", 9));
+                    command.Connection.Open();
+                    command.ExecuteNonQuery();
+                }
