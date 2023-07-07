@@ -71,3 +71,5 @@ string sql =
                     command.Connection.Open();
                     command.ExecuteNonQuery();
                 }
+
+https://passwordreset.microsoftonline.com/n/passwordreset?experience=WIN10_TB#!/
